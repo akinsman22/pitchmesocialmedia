@@ -1,0 +1,16 @@
+Controllers: 
+
+
+Models: 
+User schema:
+    email: https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax 
+    timestamp: https://stackoverflow.com/questions/12669615/add-created-at-and-updated-at-fields-to-mongoose-schemas 
+    
+
+Routes: 
+
+
+
+Services:
+
+
