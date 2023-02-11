@@ -1,44 +1,42 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { UserProvider } from './contexts/UserProvider';
+import Register from './components/Register';
+import SignIn from './components/SignIn';
+import PitchList from './components/PitchList';
+import NewPitch from './components/NewPitch';
+import EditPitch from './components/EditPitch';
+import UserProfile from './components/UserProfile';
+import NavBar from './components/NavBar';
+
 
 function App() {
- return (
-<UserProvider>
-<PitchProvider>
-
-<div>
-<BrowserRouter>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="container">
-<Routes>
-  
-</Routes>
-
-</div>
+  return (
 
 
+    <BrowserRouter>
 
-</BrowserRouter>
+      <Routes>
+        <Route path='/' element={<NavBar />}>
+          <Route index element={<SignIn />} />
+          <Route path="/signin" element={<SignIn />} >
+            <Route path="/users/:id" element={<UserProfile />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
+          <Route path="/pitches" element={<PitchList />}>
+            <Route path="/pitches/new" element={<NewPitch />} />
+            <Route path="/pitches/edit/:id" element={<EditPitch />} />
+          </Route>
 
-</div>
+        </Route>
 
-</PitchProvider>
-</UserProvider>
+      </Routes>
 
- );
+
+    </BrowserRouter>
+
+
+  );
 }
 
 export default App;
